@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brightwood School - Excellence & Integrity</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8fafc;
+            color: #334155;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #1e293b;
+            color: white;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        .hero {
+            background: linear-gradient(135deg, #1e293b 0%, #3b82f6 100%);
+            color: white;
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+            opacity: 0.9;
+        }
+        .btn-main {
+            background-color: #ffffff;
+            color: #1e293b;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: background-color 0.2s;
+            display: inline-block;
+        }
+        .btn-main:hover {
+            background-color: #f1f5f9;
+        }
+        .features {
+            max-width: 1000px;
+            margin: 4rem auto;
+            display: flex;
+            gap: 2rem;
+            padding: 0 2rem;
+            text-align: center;
+        }
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            flex: 1;
+            border: 1px solid #e2e8f0;
+        }
+        .feature-card h3 {
+            color: #1e293b;
+            margin-top: 0;
+        }
+        footer {
+            background-color: #1e293b;
+            color: #cbd5e1;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: auto;
+        }
+        footer p {
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Brightwood School</h1>
+        <div>
+            {% if user.is_authenticated %}
+                <a href="{% url 'dashboard_redirect' %}" style="color: white; text-decoration: none; font-weight: bold;">Go to Dashboard</a>
+            {% else %}
+                <a href="{% url 'login' %}" style="color: white; text-decoration: none; background: #3b82f6; padding: 0.5rem 1.2rem; border-radius: 6px; font-weight: bold;">Portal Login</a>
+            {% endif %}
+        </div>
+    </header>
+
+    <div class="hero">
+        <h2>Welcome to Brightwood School</h2>
+        <p>Empowering the next generation with exceptional education, modern digital tools, discipline, and success.</p>
+        <a href="{% url 'login' %}" class="btn-main">Access School Portal</a>
+    </div>
+
+    <div class="features">
+        <div class="feature-card">
+            <h3> Smart Academics</h3>
+            <p>Track student performance, classes, and examination results seamlessly in one place.</p>
+        </div>
+        <div class="feature-card">
+            <h3> Daily Attendance</h3>
+            <p>Reliable and straightforward attendance monitoring for teachers and administrators.</p>
+        </div>
+        <div class="feature-card">
+            <h3> Secure Finance</h3>
+            <p>Clear tracking of school fee payments, balances, and financial records.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p><strong>Brightwood School</strong> — Shaping Futures with Excellence.</p>
+        <p>Contact Us: info@brightwoodschool.edu | Phone: +254 700 000 0</p>
+        <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 1.5rem;">&copy; 2026 Brightwood School Systems. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

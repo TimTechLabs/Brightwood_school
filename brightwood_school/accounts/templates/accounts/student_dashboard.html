@@ -1,0 +1,10 @@
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+    <h2>Student Portal</h2>
+    <p style="font-size: 1.2rem; color: #555;">Welcome! Click an option below to view your details:</p>
+    
+    <div style="margin-top: 2rem;">
+        <a href="{% url 'attendance_list' %}" class="btn-big" style="display: inline-block; background-color: #2563eb; color: white; padding: 1rem 2rem; font-size: 1.2rem; font-weight: bold; text-decoration: none; border-radius: 8px;">View Attendance</a>
+    </div>
+{% endblock %}

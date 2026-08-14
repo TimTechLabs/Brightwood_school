@@ -1,0 +1,19 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}Teacher Dashboard - Brightwood School{% endblock %}
+
+{% block content %}
+    <h2>Teacher Portal</h2>
+    <p>Welcome, Teacher! View your assigned classes, subjects, and manage student attendance or grades here.</p>
+
+    <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 1.5rem 0;">
+
+    <h3>Quick Actions</h3>
+    <ul>
+        <li>Mark Daily Attendance</li>
+        <li>Upload Examination Marks</li>
+        <li>View Student Roster</li>
+    </ul>
+
+    <a href="{% url 'logout' %}" class="btn" style="background-color: #ef4444;">Secure Logout</a>
+{% endblock %}

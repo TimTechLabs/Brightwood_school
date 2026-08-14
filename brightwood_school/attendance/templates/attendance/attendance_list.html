@@ -1,0 +1,39 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}Attendance Records - Brightwood School{% endblock %}
+
+{% block content %}
+    <h2>Attendance Records</h2>
+    <p>History of all marked attendance logs across school classrooms.</p>
+
+    <table style="width: 100%; border-collapse: collapse; margin-top: 1.5rem;">
+        <thead>
+            <tr style="background-color: #f1f5f9; text-align: left;">
+                <th style="padding: 0.75rem; border-bottom: 1px solid #cbd5e1;">Student</th>
+                <th style="padding: 0.75rem; border-bottom: 1px solid #cbd5e1;">Classroom</th>
+                <th style="padding: 0.75rem; border-bottom: 1px solid #cbd5e1;">Date</th>
+                <th style="padding: 0.75rem; border-bottom: 1px solid #cbd5e1;">Status</th>
+                <th style="padding: 0.75rem; border-bottom: 1px solid #cbd5e1;">Marked By</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in attendances %}
+            <tr>
+                <td style="padding: 0.75rem; border-bottom: 1px solid #e2e8f0;">{{ item.student }}</td>
+                <td style="padding: 0.75rem; border-bottom: 1px solid #e2e8f0;">{{ item.classroom }}</td>
+                <td style="padding: 0.75rem; border-bottom: 1px solid #e2e8f0;">{{ item.date }}</td>
+                <td style="padding: 0.75rem; border-bottom: 1px solid #e2e8f0;"><strong>{{ item.status }}</strong></td>
+                <td style="padding: 0.75rem; border-bottom: 1px solid #e2e8f0;">{{ item.marked_by }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" style="padding: 1rem; text-align: center; color: #64748b;">No attendance records found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div style="margin-top: 2rem;">
+        <a href="{% url 'mark_attendance' %}" class="btn">Mark New Attendance</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+<div style="max-width: 1200px; margin: 0 auto; padding: 2rem; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    
+    <div style="text-align: center; margin-bottom: 2.5rem;">
+        <h1 style="color: #1e293b; font-size: 2.25rem; margin-bottom: 0.5rem;">Brightwood School Records Hub</h1>
+        <p style="color: #64748b; font-size: 1.1rem;">Live data synchronized directly from your administration database.</p>
+    </div>
+
+    <!-- Quick Stats Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+        <div style="background: #ffffff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); border-left: 5px solid #2563eb;">
+            <h3 style="color: #64748b; font-size: 0.9rem; text-transform: uppercase; margin: 0;">Total Students</h3>
+            <p style="font-size: 2rem; font-weight: bold; color: #1e293b; margin: 0.5rem 0 0 0;">{{ students|length }}</p>
+        </div>
+        <div style="background: #ffffff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); border-left: 5px solid #10b981;">
+            <h3 style="color: #64748b; font-size: 0.9rem; text-transform: uppercase; margin: 0;">Classrooms</h3>
+            <p style="font-size: 2rem; font-weight: bold; color: #1e293b; margin: 0.5rem 0 0 0;">{{ classrooms|length }}</p>
+        </div>
+        <div style="background: #ffffff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); border-left: 5px solid #f59e0b;">
+            <h3 style="color: #64748b; font-size: 0.9rem; text-transform: uppercase; margin: 0;">Subjects</h3>
+            <p style="font-size: 2rem; font-weight: bold; color: #1e293b; margin: 0.5rem 0 0 0;">{{ subjects|length }}</p>
+        </div>
+        <div style="background: #ffffff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); border-left: 5px solid #8b5cf6;">
+            <h3 style="color: #64748b; font-size: 0.9rem; text-transform: uppercase; margin: 0;">Active Exams</h3>
+            <p style="font-size: 2rem; font-weight: bold; color: #1e293b; margin: 0.5rem 0 0 0;">{{ exams|length }}</p>
+        </div>
+    </div>
+
+    <!-- Students Table Section -->
+    <div style="background: #ffffff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 2rem;">
+        <h2 style="color: #1e293b; font-size: 1.5rem; margin-bottom: 1rem; border-bottom: 2px solid #f1f5f9; padding-bottom: 0.5rem;">Registered Students</h2>
+        <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                    <tr style="background-color: #f8fafc; color: #475569;">
+                        <th style="padding: 1rem; border-bottom: 2px solid #e2e8f0;">Student Name / ID</th>
+                        <th style="padding: 1rem; border-bottom: 2px solid #e2e8f0;">Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                    <tr style="border-bottom: 1px solid #f1f5f9;">
+                        <td style="padding: 1rem; color: #334155; font-weight: 500;">{{ student }}</td>
+                        <td style="padding: 1rem; color: #64748b;">Active Record in System</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="2" style="padding: 1.5rem; text-align: center; color: #94a3b8;">No students added in the admin panel yet.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Classrooms & Subjects Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+        
+        <!-- Classrooms List -->
+        <div style="background: #ffffff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
+            <h3 style="color: #1e293b; font-size: 1.25rem; margin-bottom: 1rem; border-bottom: 2px solid #f1f5f9; padding-bottom: 0.5rem;">Classrooms</h3>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                {% for room in classrooms %}
+                <li style="padding: 0.75rem 0; border-bottom: 1px solid #f1f5f9; color: #334155; font-weight: 500;">🏫 {{ room }}</li>
+                {% empty %}
+                <li style="color: #94a3b8; padding: 0.5rem 0;">No classrooms found.</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Subjects List -->
+        <div style="background: #ffffff; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
+            <h3 style="color: #1e293b; font-size: 1.25rem; margin-bottom: 1rem; border-bottom: 2px solid #f1f5f9; padding-bottom: 0.5rem;">Subjects</h3>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                {% for subject in subjects %}
+                <li style="padding: 0.75rem 0; border-bottom: 1px solid #f1f5f9; color: #334155; font-weight: 500;">📚 {{ subject }}</li>
+                {% empty %}
+                <li style="color: #94a3b8; padding: 0.5rem 0;">No subjects found.</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brightwood School</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+            color: #222;
+        }
+        header {
+            background-color: #1e293b;
+            color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+        .container {
+            max-width: 800px;
+            margin: 3rem auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .btn-big {
+            display: inline-block;
+            background-color: #2563eb;
+            color: white;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 8px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-big:hover {
+            background-color: #1d4ed8;
+        }
+        .btn-logout {
+            background-color: #dc2626;
+        }
+        .btn-logout:hover {
+            background-color: #b91c1c;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Brightwood School</h1>
+        <div>
+            {% if user.is_authenticated %}
+                <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn-big btn-logout" style="padding: 0.5rem 1rem; font-size: 1rem;">Logout</button>
+                </form>
+            {% endif %}
+        </div>
+    </header>
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+</body>
+</html>
