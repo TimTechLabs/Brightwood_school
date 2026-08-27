@@ -85,4 +85,36 @@
     </div>
 
 </div>
+<!-- Place this near the bottom of school_directory.html -->
+<hr style="margin: 2rem 0; border: 0; border-top: 1px solid #ccc;">
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+    <!-- Teachers Section -->
+    <div style="background: #ffffff; padding: 1.25rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+        <h3>Teachers Directory</h3>
+        <ul style="list-style: none; padding: 0;">
+            {% for teacher in teachers %}
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #f0f0f0;">
+                    <strong>{{ teacher.first_name }} {{ teacher.last_name }}</strong> - {{ teacher.subject }}
+                </li>
+            {% empty %}
+                <li>No teacher records available.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Finance Section -->
+    <div style="background: #ffffff; padding: 1.25rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+        <h3>Finance Records</h3>
+        <ul style="list-style: none; padding: 0;">
+            {% for record in finance %}
+                <li style="padding: 0.5rem 0; border-bottom: 1px solid #f0f0f0;">
+                    {{ record.student }}: KSh {{ record.amount }}
+                </li>
+            {% empty %}
+                <li>No financial transactions recorded.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 {% endblock %}

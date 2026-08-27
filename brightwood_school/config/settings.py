@@ -27,11 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['.onrender.com', 'localhost', '127.0.0.1']
 
-# config/settings.py
 
-
-# config/settings.py
-# config/settings.py
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -40,19 +36,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-    # Core Apps
+    'django.contrib.humanize',  # <--- Add this line
+
+    # Local apps
     'accounts',
-    'students',
-    'teachers',
     'academics',
     'attendance',
-    'examinations',
-    
-    # Finance App
     'finance',
+    'students',
+    'teachers',
+    'examinations',
 ]
-
 
 
 
