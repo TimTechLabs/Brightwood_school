@@ -13,6 +13,9 @@
             --dark-bg: #0b0f19;
             --card-bg: #ffffff;
         }
+        html {
+  scroll-behavior: smooth;
+}
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f8fafc;
@@ -168,17 +171,17 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav align-items-center gap-3">
-                    <li class="nav-item"><a class="nav-link px-2" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link px-2" href="#">Programs</a></li>
-                    <li class="nav-item"><a class="nav-link px-2" href="#">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link px-md-3" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link px-md-3" href="#explore">Programs</a></li>
+                    <li class="nav-item"><a class="nav-link px-md-3" href="#about">About Us</a></li>
                     <li class="nav-item ms-2"><a class="btn btn-gradient btn-sm px-4 shadow-sm" href="{% url 'dashboard' %}">Access Student Portal</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Grand Hero Section -->
-    <div class="hero-banner">
+    <!-- Hero Banner Section -->
+    <div id="home" class="hero-banner">
         <div class="container py-5">
             <span class="badge badge-elite mb-4 d-inline-block shadow-sm">ESTABLISHED FOR LEADERSHIP & EXCELLENCE</span>
             <h1 class="hero-title display-3 fw-bold mb-4 text-white">Shaping Character, Inspiring Minds, <br><span style="color: var(--accent-gold);">Defining the Future</span></h1>
@@ -231,9 +234,29 @@
                 <div class="feature-card">
                     <div class="icon-box">
                         <svg width="28" height="28" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2 5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v1h8v-1z"/>
                         </svg>
                     </div>
+                    <h4 class="fw-bold text-dark mb-3">Holistic Discipline</h4>
+                    <p class="text-muted mb-0" style="line-height: 1.6;">
+                        We believe in balanced growth—instilling moral integrity, physical fitness, leadership capabilities, and deep emotional resilience.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div id="about" class="container mb-5 pb-4">
+        <div class="motto-section text-center position-relative overflow-hidden">
+            <span class="text-classy-gold text-uppercase tracking-widest text-warning small fw-bold d-block mb-2">OUR GUIDING PHILOSOPHY</span>
+            <h3 class="display-5 fw-bold text-italic mb-3 text-white">"Sound mind in a sound body"</h3>
+            <p class="text-light opacity-75 mx-auto mb-0" style="max-width: 600px;">
+                Every program, lesson, and activity at Brightwood is engineered to harmonize intellectual growth with strong ethical character.
+            </p>
+        </div>
+    </div>
+   
                     <h4 class="fw-bold text-dark mb-3">Holistic Discipline</h4>
                     <p class="text-muted mb-0" style="line-height: 1.6;">
                         We believe in balanced growth—instilling moral integrity, physical fitness, leadership capabilities, and deep emotional resilience.
