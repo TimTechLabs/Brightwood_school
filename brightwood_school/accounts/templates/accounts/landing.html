@@ -3,289 +3,374 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brightwood School - Elite Education & Innovation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Brightwood School - Elite Education</title>
     <style>
-        :root {
-            --primary-color: #1e3a8a;
-            --accent-gold: #f59e0b;
-            --dark-bg: #0b0f19;
-            --card-bg: #ffffff;
+        *, *::before, *::after {
+            box-sizing: border-box;
         }
+
         html {
-  scroll-behavior: smooth;
-}
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
-            color: #1e293b;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            scroll-behavior: smooth;
+        }
+
+        html, body {
             margin: 0;
+            padding: 0;
+            width: 100%;
+            max-width: 100vw;
             overflow-x: hidden;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #0b0f19;
+            color: #ffffff;
         }
-        /* Elite Navbar */
-        .navbar-custom {
-            background-color: rgba(11, 15, 25, 0.95);
-            backdrop-filter: blur(10px);
+
+        /* Header Navigation */
+        header {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #0b0f19;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
-        .navbar-brand {
-            font-weight: 800;
-            color: #ffffff !important;
-            font-size: 1.4rem;
-            letter-spacing: 0.5px;
+
+        header h1 {
+            margin: 0;
+            font-size: clamp(1.1rem, 4vw, 1.5rem);
+            font-weight: 700;
         }
-        .nav-link {
-            color: #cbd5e1 !important;
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.95rem;
             font-weight: 500;
             transition: color 0.2s ease;
         }
-        .nav-link:hover {
-            color: var(--accent-gold) !important;
+
+        .nav-links a:hover {
+            color: #f59e0b;
         }
-        /* Stunning Hero Section */
-        .hero-banner {
-            background: radial-gradient(circle at top right, #1e3a8a 0%, #0b0f19 60%);
+
+        .menu-toggle {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
             color: white;
-            padding: 120px 20px 100px 20px;
-            text-align: center;
-            position: relative;
-        }
-        .hero-banner::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 50px;
-            background: linear-gradient(to top, #f8fafc, transparent);
-        }
-        .badge-elite {
-            background: rgba(245, 158, 11, 0.15);
-            color: var(--accent-gold);
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            font-weight: 600;
-            letter-spacing: 1px;
-            padding: 8px 20px;
-            border-radius: 50px;
-            text-transform: uppercase;
-            font-size: 0.75rem;
-        }
-        .hero-title {
-            font-weight: 800;
-            letter-spacing: -1px;
-            line-height: 1.2;
-        }
-        .btn-gradient {
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-            border: none;
-            color: white;
-            font-weight: 600;
-            padding: 14px 32px;
-            border-radius: 50px;
-            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
-            transition: all 0.3s ease;
-        }
-        .btn-gradient:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.6);
-            color: white;
-        }
-        /* Feature Cards */
-        .feature-card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 40px 30px;
-            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.03);
-            border: 1px solid #e2e8f0;
-            height: 100%;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #2563eb, var(--accent-gold));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
-        }
-        .feature-card:hover::before {
-            opacity: 1;
-        }
-        .icon-box {
-            width: 65px;
-            height: 65px;
-            background: #eff6ff;
-            color: #2563eb;
-            display: flex;
+            padding: 0.5rem 0.75rem;
+            cursor: pointer;
+            display: none;
             align-items: center;
             justify-content: center;
-            border-radius: 14px;
-            font-size: 1.6rem;
-            margin-bottom: 25px;
         }
-        /* Motto Callout */
-        .motto-section {
-            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-            border-radius: 20px;
-            padding: 50px;
-            color: white;
-            position: relative;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-        /* Premium Footer */
-        .footer-custom {
-            background-color: var(--dark-bg);
-            color: #94a3b8;
-            padding: 40px 0;
+
+        /* Hero Section */
+        .hero {
+            min-height: calc(100vh - 70px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            font-size: 0.9rem;
-            margin-top: auto;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: clamp(2.5rem, 5vw, 5rem) 1.25rem;
+            background: radial-gradient(circle at center, #1e3a8a 0%, #0b0f19 70%);
+            width: 100%;
+        }
+
+        .badge {
+            display: inline-block;
+            border: 1px solid #f59e0b;
+            color: #f59e0b;
+            padding: 0.4rem 0.85rem;
+            border-radius: 50px;
+            font-size: clamp(0.65rem, 2vw, 0.8rem);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin: 0 auto 1.75rem auto;
+            max-width: calc(100% - 2rem);
+            white-space: normal;
+            word-break: break-word;
+            overflow-wrap: anywhere;
+            line-height: 1.3;
+        }
+
+        .hero h2 {
+            font-size: clamp(1.75rem, 5.5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin: 0 0 1.25rem 0;
+            max-width: 850px;
+            width: 100%;
+        }
+
+        .hero h2 .highlight {
+            color: #f59e0b;
+            display: block;
+            margin-top: 0.25rem;
+        }
+
+        .hero p {
+            font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+            color: #cbd5e1;
+            max-width: 650px;
+            line-height: 1.6;
+            margin: 0 auto 2rem auto;
+            width: 100%;
+        }
+
+        /* CTA Action Buttons */
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 500px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.85rem 1.75rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            width: auto;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6);
+        }
+
+        .btn-outline {
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+        }
+
+        .btn-outline:hover {
+            border-color: #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Content Sections */
+        .section-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 1.25rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h3 {
+            font-size: clamp(1.5rem, 4vw, 2.25rem);
+            margin: 0.5rem 0 0 0;
+        }
+
+        .section-title .sub-tag {
+            color: #2563eb;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Feature Cards Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 1.75rem;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(245, 158, 11, 0.4);
+        }
+
+        .card h4 {
+            margin: 0 0 0.75rem 0;
+            font-size: 1.2rem;
+            color: #ffffff;
+        }
+
+        .card p {
+            margin: 0;
+            color: #94a3b8;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Mobile Breakpoint Adjustments */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 60px;
+                right: -100%;
+                width: 100%;
+                height: calc(100vh - 60px);
+                background-color: #0b0f19;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 2rem;
+                gap: 2rem;
+                transition: right 0.3s ease;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .cta-group {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 0.85rem 1rem;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .badge {
+                padding: 0.35rem 0.75rem;
+                letter-spacing: 0;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Elite Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-custom sticky-top px-4">
-        <div class="container-fluid">
-            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
-                <span class="fs-4"></span> Brightwood School
-            </a>
-            <button class="navbar-toggler border-0 bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav align-items-center gap-3">
-                    <li class="nav-item"><a class="nav-link px-md-3" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link px-md-3" href="#explore">Programs</a></li>
-                    <li class="nav-item"><a class="nav-link px-md-3" href="#about">About Us</a></li>
-                    <li class="nav-item ms-2"><a class="btn btn-gradient btn-sm px-4 shadow-sm" href="{% url 'dashboard' %}">Access Student Portal</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <header>
+        <h1>Brightwood School</h1>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#explore">Programs</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="{% url 'dashboard' %}">Portal Access</a></li>
+        </ul>
+    </header>
 
-    <!-- Hero Banner Section -->
-    <div id="home" class="hero-banner">
-        <div class="container py-5">
-            <span class="badge badge-elite mb-4 d-inline-block shadow-sm">ESTABLISHED FOR LEADERSHIP & EXCELLENCE</span>
-            <h1 class="hero-title display-3 fw-bold mb-4 text-white">Shaping Character, Inspiring Minds, <br><span style="color: var(--accent-gold);">Defining the Future</span></h1>
-            <p class="lead text-light opacity-85 mx-auto mb-5" style="max-width: 750px; font-weight: 400; line-height: 1.7;">
-                Welcome to Brightwood School. We merge timeless moral values with advanced academic rigor and modern digital tracking to cultivate holistic, high-achieving global leaders.
-            </p>
-            <div class="d-flex justify-content-center gap-3 flex-wrap">
-                <a href="{% url 'dashboard' %}" class="btn btn-gradient btn-lg px-5 py-3 shadow">Enter Student Portal &rarr;</a>
-                <a href="#explore" class="btn btn-outline-light btn-lg px-4 py-3 fw-semibold rounded-pill">Discover More</a>
-            </div>
+    <section id="home" class="hero">
+        <div class="badge">
+            Established for Leadership &amp; Excellence
         </div>
-    </div>
 
-    <!-- Core Features / Pillars Grid -->
-    <div id="explore" class="container py-5 my-4">
-        <div class="text-center mb-5">
-            <span class="text-primary fw-bold text-uppercase tracking-wider small">OUR CORE PILLARS</span>
-            <h2 class="fw-bold display-6 text-dark mt-2">Why Brightwood Stands Above the Rest</h2>
-            <p class="text-muted">An ecosystem built for ultimate student success, discipline, and technological fluency.</p>
+        <h2>
+            Shaping Character, Inspiring Minds,
+            <span class="highlight">Defining the Future</span>
+        </h2>
+
+        <p>
+            Welcome to Brightwood School. We merge timeless moral values with advanced digital learning to build confident, visionary leaders.
+        </p>
+
+        <div class="cta-group">
+            <a href="{% url 'dashboard' %}" class="btn btn-primary">Enter Student Portal &rarr;</a>
+            <a href="#explore" class="btn btn-outline">Discover More</a>
         </div>
-        <div class="row g-4">
-            <div class="col-lg-4 col-md-6">
-                <div class="feature-card">
-                    <div class="icon-box">
-                        <svg width="28" height="28" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0 1 1h.5a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.276-.447l-7.5-3.5z"/>
-                            <path d="M4.108 7.91 1 9.5v5c0 .5.5 1 1 1h12c.5 0 1-.5 1-1V9.5l-3.108-1.59L8 10.72 4.108 7.91z"/>
-                        </svg>
-                    </div>
-                    <h4 class="fw-bold text-dark mb-3">World-Class Academics</h4>
-                    <p class="text-muted mb-0" style="line-height: 1.6;">
-                        Rigorous curriculum delivered by passionate educators, designed to foster critical thinking, creativity, and lifelong intellectual curiosity.
-                    </p>
-                </div>
+    </section>
+
+    <!-- Core Pillars Grid -->
+    <section id="explore" class="section-container">
+        <div class="section-title">
+            <span class="sub-tag">Our Core Pillars</span>
+            <h3>Why Brightwood Stands Above the Rest</h3>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h4>World-Class Academics</h4>
+                <p>Rigorous curriculum delivered by passionate educators, designed to foster critical thinking and lifelong intellectual curiosity.</p>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="feature-card">
-                    <div class="icon-box">
-                        <svg width="28" height="28" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zM2.5 10a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM9 2.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zM10.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
-                        </svg>
-                    </div>
-                    <h4 class="fw-bold text-dark mb-3">Synchronized Digital Hub</h4>
-                    <p class="text-muted mb-0" style="line-height: 1.6;">
-                        State-of-the-art administrative integration allowing instantaneous student profile lookups, progress monitoring, and seamless communication.
-                    </p>
-                </div>
+            <div class="card">
+                <h4>Synchronized Digital Hub</h4>
+                <p>State-of-the-art administrative integration allowing instantaneous student profile lookups, progress monitoring, and seamless access.</p>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="feature-card">
-                    <div class="icon-box">
-                        <svg width="28" height="28" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2 5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v1h8v-1z"/>
-                        </svg>
-                    </div>
-                    <h4 class="fw-bold text-dark mb-3">Holistic Discipline</h4>
-                    <p class="text-muted mb-0" style="line-height: 1.6;">
-                        We believe in balanced growth—instilling moral integrity, physical fitness, leadership capabilities, and deep emotional resilience.
-                    </p>
-                </div>
+            <div class="card">
+                <h4>Holistic Discipline</h4>
+                <p>We believe in balanced growth—instilling moral integrity, physical fitness, leadership capabilities, and strong character.</p>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- About Section -->
-    <div id="about" class="container mb-5 pb-4">
-        <div class="motto-section text-center position-relative overflow-hidden">
-            <span class="text-classy-gold text-uppercase tracking-widest text-warning small fw-bold d-block mb-2">OUR GUIDING PHILOSOPHY</span>
-            <h3 class="display-5 fw-bold text-italic mb-3 text-white">"Sound mind in a sound body"</h3>
-            <p class="text-light opacity-75 mx-auto mb-0" style="max-width: 600px;">
-                Every program, lesson, and activity at Brightwood is engineered to harmonize intellectual growth with strong ethical character.
-            </p>
+    <section id="about" class="section-container">
+        <div class="section-title">
+            <span class="sub-tag">Our Guiding Philosophy</span>
+            <h3>"Sound mind in a sound body"</h3>
+            <p style="color: #cbd5e1; margin-top: 1rem;">Every program and lesson at Brightwood is engineered to harmonize intellectual sharpness with ethical strength.</p>
         </div>
-    </div>
-   
-                    <h4 class="fw-bold text-dark mb-3">Holistic Discipline</h4>
-                    <p class="text-muted mb-0" style="line-height: 1.6;">
-                        We believe in balanced growth—instilling moral integrity, physical fitness, leadership capabilities, and deep emotional resilience.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+    </section>
 
-    <!-- Inspiring Motto Highlight Section -->
-    <div class="container mb-5 pb-4">
-        <div class="motto-section text-center position-relative overflow-hidden">
-            <span class="text-uppercase tracking-widest text-warning small fw-bold d-block mb-2">Our Guiding Philosophy</span>
-            <h3 class="display-5 fw-bold fst-italic mb-3 text-white">"Sound mind in a sound body"</h3>
-            <p class="text-light opacity-75 mx-auto mb-0" style="max-width: 600px;">
-                Every program, lesson, and activity at Brightwood is engineered to harmonize intellectual sharpness with physical and moral strength.
-            </p>
-        </div>
-    </div>
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
 
-    <!-- Ultra-Professional Footer -->
-    <footer class="footer-custom">
-        <div class="container">
-            <h5 class="text-white fw-bold mb-2">Brightwood School Management Portal</h5>
-            <p class="mb-3 text-muted">Excellence, Integrity, and Innovation in Every Step.</p>
-            <p class="mb-0 small text-secondary">&copy; 2026 Brightwood School. All Rights Reserved. Crafted for Professional Excellence.</p>
-        </div>
-    </footer>
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        // Close menu when clicking navigation links on mobile
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
